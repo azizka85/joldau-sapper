@@ -1,12 +1,13 @@
 {
   "name": "joldau",
   "description": "Joldau - Guide application for Petroleum Engineering of Satbayev University",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "private": true,
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "start": "nodemon public/build/server/server.js",
+    "start:prod": "node public/build/server/server.js",
     "validate": "svelte-check"
   },
   "devDependencies": {
