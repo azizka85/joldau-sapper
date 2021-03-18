@@ -39,9 +39,11 @@ export default [{
 	input: 'src/client.ts',
 	output: {
 		sourcemap: true,
-		format: 'iife',
+		format: 'esm',
 		name: 'client',
-		file: 'public/build/client/bundle.js'
+		dir: 'public/build/client',
+		entryFileNames: '[name].js',
+		chunkFileNames: '[name].js',
 	},
 	plugins: [
 		svelte({
