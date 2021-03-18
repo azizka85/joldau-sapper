@@ -94,6 +94,8 @@ export default [{
 		format: 'cjs',
 		name: 'server',
 		dir: 'public/build/server',
+		entryFileNames: '[name].js',
+		chunkFileNames: '[name].js',		
 	},
 	plugins: [
 		svelte({
