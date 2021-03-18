@@ -71,7 +71,7 @@ export default [{
 		typescript({
 			sourceMap: !production,
 			inlineSources: !production,
-			exclude: 'src/server.ts'
+			exclude: ['src/server.ts', 'src/utils/ServerNavigator.ts']
 		}),
 
 		// In dev mode, call `npm run start` once

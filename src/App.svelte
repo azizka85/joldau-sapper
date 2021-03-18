@@ -4,9 +4,14 @@ import SearchBar from "./components/SearchBar.svelte";
 import { DEFAULT_TITLE } from "./globals";
 import type { INavigator } from "./utils/INavigator";
 
+export let navigationPath = null;
 export let navigator: INavigator;
 
 let path = '';
+
+if(navigationPath) {
+	navigator?.navigateTo(navigationPath);
+}
 
 function navigate() {
 	navigator?.navigateTo(path);
