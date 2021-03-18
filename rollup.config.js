@@ -88,13 +88,12 @@ export default [{
 		clearScreen: false
 	}
 }, {
-	inlineDynamicImports: true,
 	input: 'src/server.ts',
 	output: {
 		sourcemap: true,
 		format: 'cjs',
 		name: 'server',
-		file: 'public/build/server/bundle.js',
+		dir: 'public/build/server',
 	},
 	plugins: [
 		svelte({

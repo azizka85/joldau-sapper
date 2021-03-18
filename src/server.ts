@@ -10,10 +10,11 @@ http.createServer(async (req, res,) => {
   assets(req, res, async () => {
     const component = await import('./App.svelte');
     const data = component.default.render();
-  
+
+    let head = `${data.head}<style>${data.css.code}</style>`;
     let html = template.default;
     html = html.replace('%server.lang%', 'en');
-    html = html.replace('%server.head%', data.head);
+    html = html.replace('%server.head%', head);
     html = html.replace('%server.html%', data.html);
   
     res.end(html);
