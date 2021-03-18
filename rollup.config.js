@@ -9,6 +9,10 @@ import css from 'rollup-plugin-css-only';
 
 const production = !process.env.ROLLUP_WATCH;
 
+if(!production) {
+	process.env.PORT = 3000;
+}
+
 function serve() {
 	let server;
 
