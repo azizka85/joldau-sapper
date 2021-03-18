@@ -1,12 +1,12 @@
 {
   "name": "joldau",
   "description": "Joldau - Guide application for Petroleum Engineering of Satbayev University",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "private": true,
   "scripts": {
     "build": "rollup -c",
-    "dev": "rollup -c -w",    
-    "start": "node public/build/server/server.js",
+    "dev": "rollup -c -w",
+    "start": "nodemon public/build/server/server.js",
     "validate": "svelte-check"
   },
   "devDependencies": {
@@ -15,6 +15,7 @@
     "@rollup/plugin-typescript": "^8.0.0",
     "@tsconfig/svelte": "^1.0.0",
     "@types/node": "^14.14.35",
+    "nodemon": "^2.0.7",
     "rollup": "^2.3.4",
     "rollup-plugin-css-only": "^3.1.0",
     "rollup-plugin-html": "^0.2.1",
