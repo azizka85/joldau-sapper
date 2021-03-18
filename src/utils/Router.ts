@@ -1,9 +1,3 @@
-export enum CategoryType {
-  general = 'general',
-  client = 'client',
-  server = 'server'
-};
-
 export interface Route {
   pattern: RegExp | string;  
 };
@@ -14,64 +8,48 @@ export interface RouteResult {
 };
 
 export interface ConstructorParameter {
-  categories?: Map<CategoryType, Route[]>;
+  routes?: Route[];
 };
 
 export class Router {
-  protected categories: Map<CategoryType, Route[]>;
+  protected routes: Route[];
   
-  public constructor({ categories }: ConstructorParameter) { 
-    this.categories = categories || new Map();
+  public constructor({ routes }: ConstructorParameter) { 
+    this.routes = routes || [];
   }
 
-  protected createCategoryIfNotExist(categoryType: CategoryType) {
-    if(!this.categories.has(categoryType)) {
-      this.categories.set(categoryType, []);
-    }
+  public addRoute(route: Route) {   
+    this.routes.push(route);    
   }
 
-  public addRoute(route: Route, categoryType: CategoryType) {
-    this.createCategoryIfNotExist(categoryType);
-    
-    this.categories.get(categoryType).push(route);    
-  }
+  public removeRoute(param: RegExp | string) {
+    for(let i = 0; i < this.routes.length; i++) {
+      const route = this.routes[i];
 
-  public removeRoute(param: RegExp | string, categoryType: CategoryType) {
-    if(this.categories.has(categoryType)) {
-      let routes = this.categories.get(categoryType);
-
-      for(let i = 0; i < routes.length; i++) {
-        let route = routes[i];
-  
-        if(param.toString() == route.pattern.toString()) {
-          routes.splice(i, 1);
-        }
-      }      
-    }
+      if(param.toString() == route.pattern.toString()) {
+        this.routes.splice(i, 1);
+      }
+    }      
   }
 
   public flush() {
-    this.categories = new Map();
+    this.routes = [];
   }
 
-  public check(input: string, categoryType: CategoryType): RouteResult {
+  public check(input: string): RouteResult {
     let route: Route = null;
     let params: string[] = [];
 
-    if(this.categories.has(categoryType)) {
-      let routes = this.categories.get(categoryType);
+    for(let item of this.routes) {
+      const match = input.match(item.pattern);
 
-      for(let item of routes) {
-        let match = input.match(item.pattern);
-  
-        if(match) {
-          params = match;
-          route = item;
-  
-          break;
-        }
+      if(match) {
+        params = match;
+        route = item;
+
+        break;
       }
-    }
+    }    
 
     return { route, params };
   }

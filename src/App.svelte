@@ -2,22 +2,14 @@
 import Loader from "./components/Loader.svelte";
 import SearchBar from "./components/SearchBar.svelte";
 import { DEFAULT_TITLE } from "./globals";
-import { CategoryType, Router } from "./utils/Router";
+import type { INavigator } from "./utils/INavigator";
 
-let input = '';
-let type = CategoryType.server;
+export let navigator: INavigator;
 
-let router = new Router({categories: new Map([
-	[CategoryType.client, [
-		{pattern: /about/},
-		{pattern: /products\/(.*)\/edit\/(.*)/}
-	]]
-])});
+let path = '';
 
-function check() {
-	let result = router.check(input, type);
-
-	console.log(result);
+function navigate() {
+	navigator?.navigateTo(path);
 }
 </script>
 
@@ -29,13 +21,10 @@ function check() {
 
 <main>
 	<Loader />
-	<form on:submit|preventDefault={check}>
-		<select bind:value={type}>
-			<option value={CategoryType.general}>General</option>
-			<option value={CategoryType.client}>Client</option>
-			<option value={CategoryType.server}>Server</option>
-		</select>
-		<input bind:value={input} />
+	<form on:submit|preventDefault={navigate}>
+		<label>
+			Input path: <input bind:value={path} />
+		</label>		
 		<button type="submit">Check</button>
 	</form>
 </main>

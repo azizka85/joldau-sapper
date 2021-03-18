@@ -124,7 +124,7 @@ export default [{
 			sourceMap: true,
 			inlineSources: true,
 			types: ["node"],
-			exclude: 'src/client.ts'
+			exclude: ['src/client.ts', 'src/utils/ClientNavigator.ts']
 		}),				
 	]
 }];
