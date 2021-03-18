@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="%server.lang%">
 <head>
 	<meta charset='utf-8'>
 	<meta name='viewport' content='width=device-width,initial-scale=1'>
@@ -12,8 +12,11 @@
 	<link rel='stylesheet' href='/build/client/bundle.css'>
 
 	<script defer src='/build/client/bundle.js'></script>
+
+	%server.head%
 </head>
 
 <body>
+	%server.html%
 </body>
 </html>

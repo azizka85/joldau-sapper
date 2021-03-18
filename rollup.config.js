@@ -6,6 +6,7 @@ import { terser } from 'rollup-plugin-terser';
 import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
 import css from 'rollup-plugin-css-only';
+import html from 'rollup-plugin-html';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -34,12 +35,12 @@ function serve() {
 	};
 }
 
-export default {
+export default [{
 	input: 'src/client.ts',
 	output: {
 		sourcemap: true,
 		format: 'iife',
-		name: 'app',
+		name: 'client',
 		file: 'public/build/client/bundle.js'
 	},
 	plugins: [
@@ -47,7 +48,8 @@ export default {
 			preprocess: sveltePreprocess({ sourceMap: !production }),
 			compilerOptions: {
 				// enable run-time checks when not in production
-				dev: !production
+				dev: !production,
+				hydratable: true
 			}
 		}),
 		// we'll extract any component CSS out into
@@ -66,7 +68,8 @@ export default {
 		commonjs(),
 		typescript({
 			sourceMap: !production,
-			inlineSources: !production
+			inlineSources: !production,
+			exclude: 'src/server.ts'
 		}),
 
 		// In dev mode, call `npm run start` once
@@ -84,4 +87,41 @@ export default {
 	watch: {
 		clearScreen: false
 	}
-};
+}, {
+	inlineDynamicImports: true,
+	input: 'src/server.ts',
+	output: {
+		sourcemap: true,
+		format: 'cjs',
+		name: 'server',
+		file: 'public/build/server/bundle.js',
+	},
+	plugins: [
+		svelte({
+			preprocess: sveltePreprocess({ sourceMap: !production }),
+			compilerOptions: {
+				// enable run-time checks when not in production
+				dev: !production,
+				generate: 'ssr',
+				hydratable: true
+			}
+		}),
+		html({
+			include: '**/*.html',
+			htmlMinifierOptions: {
+				collapseWhitespace: true,
+				collapseBooleanAttributes: true,
+				conservativeCollapse: true,
+				minifyJS: true
+			}			
+		}),
+		resolve(),
+		commonjs(),
+		typescript({
+			sourceMap: true,
+			inlineSources: true,
+			types: ["node"],
+			exclude: 'src/client.ts'
+		}),				
+	]
+}];
