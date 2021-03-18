@@ -1,5 +1,5 @@
 # joldau
- Joldau - Guide of Petroleum Engineering of Satnayev University
+ Joldau - Guide application for Petroleum Engineering of Satbayev University
 
 # Installation
 
