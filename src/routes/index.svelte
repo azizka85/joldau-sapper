@@ -1,17 +1,7 @@
 <script lang="ts">
-import SearchBar from '../components/SearchBar.svelte';	
-import Loader from '../components/Loader.svelte';
-import { isLoading } from 'svelte-i18n';
+  import { locale } from 'svelte-i18n';
+  import { goto } from '@sapper/app';
+  import { onMount } from 'svelte';
+
+  onMount(async () => goto($locale));
 </script>
-
-<svelte:head>
-	<title>Sapper project template</title>
-</svelte:head>
-
-{#if $isLoading}
-	<Loader />
-{:else}
-	<SearchBar />
-	<Loader />
-{/if}
-
