@@ -51,7 +51,10 @@ export default {
 				dedupe: ['svelte']
 			}),
 			commonjs(),
-			typescript({sourceMap: dev}),
+			typescript({ 
+				sourceMap: dev,
+				resolveJsonModule: true 
+			}),
 
 			legacy && babel({
 				extensions: ['.js', '.mjs', '.html', '.svelte'],
@@ -109,7 +112,11 @@ export default {
 				dedupe: ['svelte']
 			}),
 			commonjs(),
-			typescript({sourceMap: dev})
+			typescript({ 
+				sourceMap: dev,
+				resolveJsonModule: true,
+				types: ["node"]
+			})
 		],
 		external: Object.keys(pkg.dependencies).concat(require('module').builtinModules),
 		preserveEntrySignatures: 'strict',
@@ -130,7 +137,10 @@ export default {
 				},
 			}),
 			commonjs(),
-			typescript({sourceMap: dev}),
+			typescript({ 
+				sourceMap: dev,
+				resolveJsonModule: true 
+			}),
 			!dev && terser()
 		],
 		preserveEntrySignatures: false,
