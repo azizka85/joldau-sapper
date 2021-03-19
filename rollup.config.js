@@ -114,8 +114,7 @@ export default {
 			commonjs(),
 			typescript({ 
 				sourceMap: dev,
-				resolveJsonModule: true,
-				types: ["node"]
+				resolveJsonModule: true
 			})
 		],
 		external: Object.keys(pkg.dependencies).concat(require('module').builtinModules),
