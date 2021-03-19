@@ -10,6 +10,7 @@ import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
 import config from 'sapper/config/rollup.js';
 import pkg from './package.json';
+import json from '@rollup/plugin-json';
 
 const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
@@ -26,6 +27,7 @@ export default {
 		input: config.client.input().replace(/\.js$/, '.ts'),
 		output: config.client.output(),
 		plugins: [
+			json({ compact: true }),
 			replace({
 				preventAssignment: true,
 				values:{
@@ -49,7 +51,10 @@ export default {
 				dedupe: ['svelte']
 			}),
 			commonjs(),
-			typescript({ sourceMap: dev }),
+			typescript({ 
+				sourceMap: dev,
+				resolveJsonModule: true 
+			}),
 
 			legacy && babel({
 				extensions: ['.js', '.mjs', '.html', '.svelte'],
@@ -81,6 +86,7 @@ export default {
 		input: { server: config.server.input().server.replace(/\.js$/, ".ts") },
 		output: config.server.output(),
 		plugins: [
+			json({ compact: true }),
 			replace({
 				preventAssignment: true,
 				values:{
@@ -106,7 +112,10 @@ export default {
 				dedupe: ['svelte']
 			}),
 			commonjs(),
-			typescript({ sourceMap: dev })
+			typescript({ 
+				sourceMap: dev,
+				resolveJsonModule: true 
+			})
 		],
 		external: Object.keys(pkg.dependencies).concat(require('module').builtinModules),
 		preserveEntrySignatures: 'strict',
@@ -117,6 +126,7 @@ export default {
 		input: config.serviceworker.input().replace(/\.js$/, '.ts'),
 		output: config.serviceworker.output(),
 		plugins: [
+			json({ compact: true }),
 			resolve(),
 			replace({
 				preventAssignment: true,
@@ -126,7 +136,10 @@ export default {
 				},
 			}),
 			commonjs(),
-			typescript({ sourceMap: dev }),
+			typescript({ 
+				sourceMap: dev,
+				resolveJsonModule: true 
+			}),
 			!dev && terser()
 		],
 		preserveEntrySignatures: false,
