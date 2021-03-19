@@ -3,7 +3,7 @@
   "description": "Joldau - Guide application for Petroleum Engineering of Satbayev University",
   "version": "0.2.1",
   "engines": {
-    "node": "14.x"
+    "node": "15.9.x"
   },
   "scripts": {
     "dev": "sapper dev",
