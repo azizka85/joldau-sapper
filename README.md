@@ -18,3 +18,6 @@ Joldau - Guide application for Petroleum Engineering of Satbayev University
 - Add fake data: `./manage.py addfake`
 
 - Run server: `python manage.py runserver`
+
+# Demo site
+- Demo site here: `https://joldau.herokuapp.com/en/admin`
