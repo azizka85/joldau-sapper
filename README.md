@@ -13,4 +13,8 @@ Joldau - Guide application for Petroleum Engineering of Satbayev University
 - Install dependencies from `requirements.txt`: `pip install -r requirements.txt`
 
 # Development
+- Apply migrations: `./manage.py migrate`
+- Add super user: `python manage.py createsuperuser`
+- Add fake data: `./manage.py addfake`
+
 - Run server: `python manage.py runserver`
