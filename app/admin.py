@@ -19,3 +19,9 @@ class CategoryAdmin(admin.ModelAdmin):
 class AnswerAdmin(admin.ModelAdmin):
   list_display = ('title', 'category')
   search_fields = ['title']  
+
+  def get_search_results(self, request, queryset, search_term):
+    queryset, use_distinct = super().get_search_results(request, queryset, search_term)
+    queryset = queryset.filter(category__language=request.LANGUAGE_CODE)
+
+    return queryset, use_distinct
