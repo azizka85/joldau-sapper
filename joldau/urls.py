@@ -2,7 +2,10 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls.i18n import i18n_patterns
 
+from app import views
+
 urlpatterns = i18n_patterns(
 	path('admin/', admin.site.urls),
+	path('', views.index),
 	prefix_default_language=True
 )
