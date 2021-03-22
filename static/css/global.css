@@ -10,6 +10,7 @@
 
 	--text-color: #333;
   --text-alt-color: #fff;
+	--text-selected-color: #f71b47;
   --watermark-color: #b8b8b8;
 }
 
@@ -22,6 +23,23 @@ body {
 	background-color: var(--background-color);
 	padding: 0.5rem 0;
 	margin: 0;
+}
+
+main {
+	margin: 0.5rem 0.5rem;
+	padding: 0 0.5rem;	
+}
+
+h1 {
+	font-size: 1.5rem;	
+	margin: 0.5rem 0.5rem 0.5rem 0;
+	color: var(--primary-color);
+}
+
+h2 {
+	font-size: 1rem;
+	margin: 0.5rem 0.5rem 0.5rem 0;
+	color: var(--watermark-color);
 }
 
 .loader {
@@ -233,3 +251,112 @@ body {
 		fill: none;
 		stroke: var(--text-color);
 	}
+
+.title {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.underline {
+	border-bottom: solid 1px var(--watermark-color);
+}	
+
+.btn {
+	margin-right: 0.5rem;
+	padding: 0.25rem 1rem;
+	background-color: var(--primary-color);
+	outline: 0;
+	border: none;
+	border-radius: 0.1rem;
+	box-shadow: var(--shadow);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+
+	.btn:hover {
+		opacity: 0.9;
+	}
+
+	.btn-icon {
+		fill: var(--text-alt-color);
+		width: 1.25rem;
+		height: 1.25rem;
+		cursor: pointer;
+	}
+
+	.btn-icon.stroke {
+		stroke: var(--primary-color);
+	}
+
+	.btn-icon.fill {
+		fill: var(--text-selected-color);
+	}		
+
+.cards {
+	display: flex;	
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+	
+.card {
+	background-color: var(--content-background-color);
+	padding: 0.5rem 1rem;
+	margin: 0.5rem 0.5rem 0.5rem 0;
+	max-width: 20rem;
+	border-radius: 1rem;	
+	box-shadow: 0 2px 2px 0 rgb(0 0 0 / 8%), 0 0 2px 0 rgb(0 0 0 / 4%);
+}
+	
+	.card-title {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+	
+	.card-title-content {
+		flex: 1;
+		color: var(--primary-color);
+		text-decoration: none;
+		display: block;
+		line-height: 1.4;
+	}
+	
+		.card-title-content:hover {
+			color: var(--text-selected-color);
+		}
+
+.description {
+	color: var(--text-color);
+	margin: 0.5rem 0;
+	line-height: 1.4;
+}		
+	
+.content {
+	background-color: var(--content-background-color);
+	padding: 0.5rem 1rem;
+	margin: 0.5rem 0.5rem 0.5rem 0;
+	border-radius: 1rem;	
+	box-shadow: 0 2px 2px 0 rgb(0 0 0 / 8%), 0 0 2px 0 rgb(0 0 0 / 4%);
+}
+	
+	.content-wrapper a {
+		color: var(--primary-color);
+		text-decoration: none;
+		line-height: 1.4;
+	}
+	
+.info {
+	color: var(--watermark-color);
+	margin: 0.5rem 0;
+	font-size: 0.75rem;
+}
+
+.date-time {
+	color: var(--text-color);
+	font-size: 0.75rem;
+	margin: 0.5rem 0;
+}	

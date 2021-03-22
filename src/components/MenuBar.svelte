@@ -33,22 +33,10 @@
 				{$_('seacrh_answers')}
 			</a>
 			<a href="/" class="menu-item">
-				<svg class="menu-item-icon" viewBox="0 0 24 24">
-					<path d="M15.606 16.192l4.101 4.1a1 1 0 0 1-1.414 1.415l-4.1-4.1A7 7 0 1 1 10 5a1 1 0 0 1-.001 1.999 5 5 0 1 0 5 5 1 1 0 0 1 2 0 6.969 6.969 0 0 1-1.394 4.192zM21.121.88a3 3 0 0 1 0 4.242l-3.414 3.415a1 1 0 0 1-1.414 0L12.879 5.12A3 3 0 0 1 17 .764a3 3 0 0 1 4.121.115zm-1.414 2.828a1 1 0 0 0-1.372-1.454L17 3.45l-1.335-1.196a1 1 0 0 0-1.372 1.454L17 6.414l2.707-2.707z"/>
-				</svg>			
-				{$_('saved_search')}
-			</a>
-			<a href="/" class="menu-item">
 				<svg class="menu-item-icon stroke" viewBox="0 0 21 21">
 					<path stroke-miterlimit="2" stroke-width="9%" d="M16.79 5.2A4.15 4.15 0 0 0 13.85 4c-1.1 0-2.15.44-2.93 1.21l-.42.4-.41-.4A4.17 4.17 0 0 0 3 8.08c0 1.1.44 2.12 1.22 2.9l5.97 5.88c.09.09.2.13.3.13a.4.4 0 0 0 .3-.12l6-5.88a4.04 4.04 0 0 0 0-5.8z"/>
 				</svg>			
 				{$_('favorite')}
-			</a>
-			<a href="/" class="menu-item">
-				<svg class="menu-item-icon" viewBox="0 0 24 24">
-					<path d="M10.5 3.16V2.5a1.5 1.5 0 1 1 3 0v.66A7 7 0 0 1 19 10V17h1a1 1 0 0 1 1 1 1 1 0 0 1-1 1h-5a3 3 0 0 1-6 0H4a1 1 0 0 1-1-1 1 1 0 0 1 1-1h1v-7a7 7 0 0 1 5.5-6.84zM11 19a1 1 0 0 0 2 0h-2zm6-2v-7a5 5 0 0 0-10 0v7h10z" fill-rule="evenodd"/>
-				</svg>			
-				{$_('notifications')}
 			</a>
 			<a href="/" class="menu-item">
 				<svg class="menu-item-icon" viewBox="0 0 24 24">

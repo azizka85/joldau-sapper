@@ -1,6 +1,27 @@
+<script lang="ts" context="module">
+export async function preload({ params }) {
+  const res = await this.fetch(`${params.lang}.json`);
+  const data = await res.json();  
+
+  if(res.status === 200) {
+    return {
+      language: params.lang, 
+      data
+    };
+  } 
+  else {
+    this.error(res.status, data.message);
+  }  
+}  
+</script>
+
 <script lang="ts">
 import { _ } from 'svelte-i18n'; 
-import { DEFAULT_TITLE } from '../../globals';
+import { DEFAULT_TITLE, formatDate } from '../../globals';
+import type { Category } from '../../globals';
+
+export let language: string;
+export let data: Category;
 </script>
 
 <svelte:head>
@@ -16,10 +37,67 @@ import { DEFAULT_TITLE } from '../../globals';
         <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
       </svg>			
     </button>
-    <button class="btn">
-      <svg class="btn-icon" viewBox="0 0 24 24">
-        <path fill-rule="evenodd" d="M10.5 3.16V2.5a1.5 1.5 0 1 1 3 0v.66A7 7 0 0 1 19 10V17h1a1 1 0 0 1 1 1 1 1 0 0 1-1 1h-5a3 3 0 0 1-6 0H4a1 1 0 0 1-1-1 1 1 0 0 1 1-1h1v-7a7 7 0 0 1 5.5-6.84zM11 19a1 1 0 0 0 2 0h-2zm6-2v-7a5 5 0 0 0-10 0v7h10z"/>
-      </svg>			
-    </button>
-  </div>  
+  </div>
+  <h2>{data.answersCount} {$_('answers_count')}</h2>	
+  {#if data.categories.length > 0}
+    <div class="title underline">
+      <h1>{$_('categories')}</h1>
+    </div>	
+    <div class="cards">
+      {#each data.categories as category}
+        <div class="card">
+          <div class="card-title">
+            <a href="{language}/{category.name}" class="card-title-content">
+              {category.title}
+            </a>
+            <div class="card-title-btns">
+              <svg 
+                class="btn-icon" 
+                class:stroke={category.id % 2 === 0}
+                class:fill={category.id % 2 > 0}
+                viewBox="0 0 21 21"
+              >
+                <path stroke-miterlimit="2" stroke-width="9%" d="M16.79 5.2A4.15 4.15 0 0 0 13.85 4c-1.1 0-2.15.44-2.93 1.21l-.42.4-.41-.4A4.17 4.17 0 0 0 3 8.08c0 1.1.44 2.12 1.22 2.9l5.97 5.88c.09.09.2.13.3.13a.4.4 0 0 0 .3-.12l6-5.88a4.04 4.04 0 0 0 0-5.8z"/>
+              </svg>												
+            </div>
+          </div>
+          <p class="description">{category.description}</p>
+          <p class="info">{category.answersCount} {$_('answers_count')}</p>
+          <p class="date-time">
+            {$_('created')}: {formatDate(category.createdAt, language)}
+          </p>
+        </div>
+      {/each}
+    </div>		
+  {/if}	
+  {#if data.answers.length > 0}
+    <div class="title underline">
+      <h1>{$_('answers')}</h1>
+    </div>	
+    <div class="cards">
+      {#each data.answers as answer}
+        <div class="card">
+          <div class="card-title">
+            <a href="{language}/{answer.path}/{answer.name}" class="card-title-content">
+              {answer.title}
+            </a>
+            <div class="card-title-btns">
+              <svg 
+                class="btn-icon" 
+                class:stroke={answer.id % 2 === 0}
+                class:fill={answer.id % 2 > 0}
+                viewBox="0 0 21 21"
+              >
+                <path stroke-miterlimit="2" stroke-width="9%" d="M16.79 5.2A4.15 4.15 0 0 0 13.85 4c-1.1 0-2.15.44-2.93 1.21l-.42.4-.41-.4A4.17 4.17 0 0 0 3 8.08c0 1.1.44 2.12 1.22 2.9l5.97 5.88c.09.09.2.13.3.13a.4.4 0 0 0 .3-.12l6-5.88a4.04 4.04 0 0 0 0-5.8z"/>
+              </svg>						              						
+            </div>
+          </div>
+          <p class="info">0 {$_('cnt_messages')}</p>
+          <p class="date-time">
+            {$_('updated')}: {formatDate(answer.updatedAt, language)}
+          </p>
+        </div>
+      {/each}
+    </div>		
+  {/if}	
 </main>

@@ -7,18 +7,12 @@
 - Install all modules: `npm install`
 
 # Configure db
-- If on the server knex cli doesn't exist, so it needs to be installed:
-  - Run command: `npm install knex -g`
-- At first needs to ignore database to push server:
-  - Open `.gitignore` file and uncomment `# *.sqlite3`
 - If database not exist:
-  - For production:
-    - Migrate database schema: `knex migrate:latest --env production`
-  - For development:
-    - Migrate database schema: `knex migrate:latest`
-  
+  - Migrate database schema: `npm run migrate`  
   - Also you may fill fake data using command:
-    - Seed data: `knex seed:run`
+    - Seed data: `npm run seed`
+- In the future if you don't want update db on server:
+  - Open `.gitignore` file and uncomment `# *.sqlite3`    
 
 # Run application
 - Run in dev mode: `npm run dev`

@@ -1,7 +1,7 @@
 {
   "name": "joldau",
   "description": "Joldau - Guide application for Petroleum Engineering of Satbayev University",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "node": "15.x"
   },
@@ -10,12 +10,16 @@
     "build": "sapper build --legacy",
     "export": "sapper export --legacy",
     "start": "node __sapper__/build",
-    "validate": "svelte-check --ignore src/node_modules/@sapper"
+    "validate": "svelte-check --ignore src/node_modules/@sapper",
+    "migrate": "knex migrate:latest",
+    "seed": "knex seed:run"
   },
   "dependencies": {
     "compression": "^1.7.1",
+    "knex": "^0.95.2",
     "polka": "^0.5.1",
     "sirv": "^1.0.0",
+    "sqlite3": "^5.0.2",
     "svelte-i18n": "^3.3.7"
   },
   "devDependencies": {
@@ -42,6 +46,7 @@
     "svelte": "^3.17.3",
     "svelte-check": "^1.0.46",
     "svelte-preprocess": "^4.3.0",
+    "ts-node": "^9.1.1",
     "tslib": "^2.0.1",
     "typescript": "^4.0.3"
   }
