@@ -1,1 +1,1 @@
-web: gunicorn joldau.wsgi --log-file -
+web: npm run start

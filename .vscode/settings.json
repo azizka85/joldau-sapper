@@ -1,3 +1,6 @@
 {
-  "python.pythonPath": "venv\\Scripts\\python.exe"
+  "i18n-ally.localesPaths": [
+    "src/locales"
+  ],
+  "i18n-ally.keystyle": "flat"
 }

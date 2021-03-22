@@ -1,0 +1,21 @@
+{
+  "search": "Поиск",
+  "signin": "Войти или зарегистрироваться",
+  "seacrh_answers": "Поиск ответов",
+  "saved_search": "Сохранённые поиски",
+  "favorite": "Избранное",
+  "notifications": "Уведомления",
+  "my_answers": "Мои ответы",
+  "messages": "Сообщения",
+  "publish_answers": "Разместить ответы",
+  "settings": "Настройки",
+  "guide": "Путеводитель",
+  "answers_count": "ответов",
+  "categories": "Категории",
+  "answers": "Ответы",
+  "created": "Создано",
+  "updated": "Обновлено",
+  "cnt_messages": "сообщений",
+  "back": "Назад",
+  "not_found": "Запрашиваемая страница не найдена"
+}
