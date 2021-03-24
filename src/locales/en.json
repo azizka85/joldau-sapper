@@ -8,12 +8,13 @@
   "publish_answers": "Publish answers",
   "settings": "Settings",
   "guide": "Guide",
-  "answers_count": "answers",
+  "answers_count": "{n, plural, one {answer} other {answers}}",
   "categories": "Categories",
   "answers": "Answers",
   "created": "Created",
   "updated": "Updated",
-  "cnt_messages": "messages",
+  "cnt_messages": "{n, plural, one {message} other {messages}}",
   "back": "Back",
-  "not_found": "Requested page is not found"
+  "not_found": "Requested page is not found",
+  "home": "Home"
 }

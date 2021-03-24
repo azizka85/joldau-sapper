@@ -8,12 +8,13 @@
   "publish_answers": "Жауаптарды жариялау",
   "settings": "Теңшеулер",
   "guide": "Жолдау",
-  "answers_count": "жауаптар",
+  "answers_count": "жауап",
   "categories": "Категориялар",
   "answers": "Жауаптар",
   "created": "Жасалған",
   "updated": "Жаңартылған",
-  "cnt_messages": "хабарламалар",
+  "cnt_messages": "хабарлама",
   "back": "Артқа",
-  "not_found": "Сұраған парақша табылмады"
+  "not_found": "Сұраған парақша табылмады",
+  "home": "Басы"
 }

@@ -1,7 +1,7 @@
 <script lang="ts" context="module">
 export async function preload({ params }) {
-  const res = await this.fetch(`${params.lang}.json`);
-  const data = await res.json();  
+  const res = await this.fetch(`${[params.lang, 'category', ...params.path].join('/')}.json`);
+  const data = await res.json();
 
   if(res.status == 200) {
     return {
@@ -10,26 +10,36 @@ export async function preload({ params }) {
     };
   } else {
     this.error(res.status, data.message);
-  }  
+  }
 }  
 </script>
 
 <script lang="ts">
 import { _ } from 'svelte-i18n'; 
-import { DEFAULT_TITLE, formatDate } from '../../globals';
-import type { Category } from '../../globals';
+import { formatDate } from '../../../globals';
+import type { Category } from '../../../globals';
 
 export let language: string;
 export let data: Category;
 </script>
 
 <svelte:head>
-	<title>{$_('guide')} - {DEFAULT_TITLE}</title>
+  <title>{data.title}</title>
 </svelte:head>
+
+<div class="breadcrumbs">
+  <a class="breadcrumbs-link" href="{language}">{$_('home')}</a>
+  {#each data.parents as category}
+    <span class="breadcrumbs-separator">/</span>
+    <a class="breadcrumbs-link" href="{language}/category/{category.path}">
+      {category.title}
+    </a>
+  {/each}
+</div>
 
 <main>
   <div class="title">
-    <h1>{$_('guide')}</h1>
+    <h1>{data.title}</h1>
     <button class="btn">
       <svg class="btn-icon" viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
@@ -37,16 +47,20 @@ export let data: Category;
       </svg>			
     </button>
   </div>
-  <h2>{data.answersCount} {$_('answers_count', {values: {n: data.answersCount}})}</h2>	
+  <p class="description">{data.description}</p>
+  <p class="info">{data.answersCount} {$_('answers_count', {values: {n: data.answersCount}})}</p>
+  <p class="date-time">
+    {$_('created')}: {formatDate(data.createdAt, language)}
+  </p>
   {#if data.categories.length > 0}
     <div class="title underline">
       <h1>{$_('categories')}</h1>
-    </div>	
+    </div>  
     <div class="cards">
       {#each data.categories as category}
         <div class="card">
           <div class="card-title">
-            <a href="{language}/category/{category.name}" class="card-title-content">
+            <a href="{language}/category/{category.path}" class="card-title-content">
               {category.title}
             </a>
             <div class="card-title-btns">
@@ -57,8 +71,8 @@ export let data: Category;
                 viewBox="0 0 21 21"
               >
                 <path stroke-miterlimit="2" stroke-width="9%" d="M16.79 5.2A4.15 4.15 0 0 0 13.85 4c-1.1 0-2.15.44-2.93 1.21l-.42.4-.41-.4A4.17 4.17 0 0 0 3 8.08c0 1.1.44 2.12 1.22 2.9l5.97 5.88c.09.09.2.13.3.13a.4.4 0 0 0 .3-.12l6-5.88a4.04 4.04 0 0 0 0-5.8z"/>
-              </svg>												
-            </div>
+              </svg>              							
+            </div>            
           </div>
           <p class="description">{category.description}</p>
           <p class="info">{category.answersCount} {$_('answers_count', {values: {n: category.answersCount}})}</p>
@@ -67,8 +81,8 @@ export let data: Category;
           </p>
         </div>
       {/each}
-    </div>		
-  {/if}	
+    </div>
+  {/if}
   {#if data.answers.length > 0}
     <div class="title underline">
       <h1>{$_('answers')}</h1>
@@ -88,7 +102,7 @@ export let data: Category;
                 viewBox="0 0 21 21"
               >
                 <path stroke-miterlimit="2" stroke-width="9%" d="M16.79 5.2A4.15 4.15 0 0 0 13.85 4c-1.1 0-2.15.44-2.93 1.21l-.42.4-.41-.4A4.17 4.17 0 0 0 3 8.08c0 1.1.44 2.12 1.22 2.9l5.97 5.88c.09.09.2.13.3.13a.4.4 0 0 0 .3-.12l6-5.88a4.04 4.04 0 0 0 0-5.8z"/>
-              </svg>						              						
+              </svg>              
             </div>
           </div>
           <p class="info">0 {$_('cnt_messages', {values: {n: 0}})}</p>
@@ -97,6 +111,6 @@ export let data: Category;
           </p>
         </div>
       {/each}
-    </div>		
-  {/if}	
+    </div>
+  {/if}
 </main>

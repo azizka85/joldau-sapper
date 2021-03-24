@@ -1,4 +1,4 @@
-import { getDateFormatter } from 'svelte-i18n';
+import { getDateFormatter, number } from 'svelte-i18n';
 
 export const DEFAULT_LANGUAGE = 'en';
 export const DEFAULT_TITLE = 'Satbayev University - Petroleum Engineering';
@@ -19,7 +19,8 @@ export interface Content extends ContentType {
   path: string,
   title: string,
   createdAt: string,
-  updatedAt: string
+  updatedAt: string,
+  parents: Category[]
 };
 
 export interface Answer extends Content {
