@@ -16,5 +16,6 @@
   "cnt_messages": "{n, plural, one {message} other {messages}}",
   "back": "Back",
   "not_found": "Requested page is not found",
-  "home": "Home"
+  "home": "Home",
+  "loading": "Loading..."
 }
