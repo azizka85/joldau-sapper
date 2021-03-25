@@ -1,7 +1,8 @@
 <script lang="ts">
-	import { _ } from 'svelte-i18n';
+	import { locale, _, locales } from 'svelte-i18n';
 	
 	let menuShowed = false;
+	let showLanguageSelector = false;
 	
 	export function showMenu() {
 		menuShowed = true;
@@ -26,6 +27,23 @@
 			<div-- class="menu-profile-item">aziz.kudaikulov@gmail.com</div-->		
 		</div>
 		<div class="menu-items">
+			<div class="menu-item">
+				<div class="menu-item-wrapper" on:click={() => showLanguageSelector = !showLanguageSelector}>
+					<img class="menu-item-icon" src="/images/locale/{$locale}.svg" alt="{$locale}">
+					{$_($locale)}
+					<svg xmlns="http://www.w3.org/2000/svg" class="menu-item-right-icon" viewBox="0 0 16 16">
+						<path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+					</svg> 						
+				</div>	
+				<div class="menu-item-selector" class:hide={!showLanguageSelector}>
+					{#each $locales as lang}
+						<a href="/{lang}" class="menu-item-selector-item" on:click={() => showLanguageSelector = false}>
+							<img class="menu-item-selector-item-icon" src="/images/locale/{lang}.svg" alt="{lang}">
+							{$_(lang)}
+						</a>						
+					{/each}
+				</div>		
+			</div>
 			<a href="/" class="menu-item">
 				<svg class="menu-item-icon" viewBox="0 0 24 24">
 					<path d="M16.47 15.04l4.24 4.24a1 1 0 1 1-1.42 1.42l-4.25-4.23a7.5 7.5 0 1 1 1.42-1.42zM10.5 16a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11z"/>

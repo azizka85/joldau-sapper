@@ -14,8 +14,10 @@
   "created": "Created",
   "updated": "Updated",
   "cnt_messages": "{n, plural, one {message} other {messages}}",
-  "back": "Back",
   "not_found": "Requested page is not found",
   "home": "Home",
-  "loading": "Loading..."
+  "loading": "Loading...",
+  "kk": "Қазақша",
+  "ru": "Русский",
+  "en": "English"
 }

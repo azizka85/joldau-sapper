@@ -42,6 +42,10 @@ h2 {
 	color: var(--watermark-color);
 }
 
+.hide {
+	display: none;
+}
+
 .loader {
 	width: 2rem;
 	height: 2rem;
@@ -156,10 +160,10 @@ h2 {
 	transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
 }
 
-.hide-background {
-	opacity: 0;
-	visibility: hidden;
-}
+	.hide-background {
+		opacity: 0;
+		visibility: hidden;
+	}
 
 .menu {
 	position: fixed;
@@ -180,10 +184,10 @@ h2 {
 		display: none;
 	}	
 
-.hide-menu {
-	left: -85%;
-	visibility: hidden;
-}
+	.hide-menu {
+		left: -85%;
+		visibility: hidden;
+	}
 
 .menu-profile {
 	display: block;
@@ -245,11 +249,51 @@ h2 {
 		background-color: var(--context-background-color);
 	}
 
+	.menu-item-wrapper {
+		display: flex;
+		align-items: center;
+	}
+
+		.menu-item-selector {
+			position: absolute;
+			background-color: var(--content-background-color);
+			top: 2.75rem;
+			left: 4.25rem;
+			margin: 0.5rem 0;			
+			z-index: 2;			
+		}
+
+			.menu-item-selector-item {
+				display: flex;
+				align-items: center;
+				color: var(--text-color);
+				text-decoration: none;
+				line-height: 1.8;				
+				padding: 0.25rem;
+			}
+
+				.menu-item-selector-item:hover {
+					color: var(--primary-color);
+					background-color: var(--context-background-color);
+				}
+
+				.menu-item-selector-item-icon {
+					width: 1.5rem;
+					height: 1.5rem;
+					margin-right: 1rem;
+				}
+
 .menu-item-div {
 	border-top: 1px solid var(--menu-border-color);
 	border-bottom: 1px solid var(--menu-border-color);
 	margin: 0.5rem 0;
 	padding: 0.5rem 0;
+}
+
+.menu-item-right-icon {
+	width: 1rem;
+	height: 1rem;	
+	margin-left: 0.5rem;
 }
 
 .menu-item-icon {
