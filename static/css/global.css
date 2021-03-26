@@ -366,9 +366,14 @@ h2 {
 	justify-content: center;
 }
 
-	.single .card-title-content {
-		text-transform: uppercase;
+	.single .card {
+		max-width: 18rem;
+		margin: 0.5rem;
 	}
+
+		.single .card .card-title-content {
+			text-transform: uppercase;
+		}
 
 .cards {
 	display: flex;	

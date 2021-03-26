@@ -55,7 +55,7 @@ $: {
         <label for="password" class="form-item-name">{$_('password')}: </label>        
         <input 
           id="password" name="password" 
-          type="text" 
+          type="password" 
           class="form-item-value" 
           placeholder={$_('password')} 
           required

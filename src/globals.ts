@@ -46,3 +46,11 @@ export function formatDate(dateStr: string, language: string): string {
     locale: language
   }).format(Date.parse(dateStr));
 }
+
+export function displayErrorMessage(elem: HTMLInputElement, message: string) {
+  if(!elem.validity.valid) {
+    elem.setCustomValidity(message);
+  } else {
+    elem.setCustomValidity('');
+  }
+}

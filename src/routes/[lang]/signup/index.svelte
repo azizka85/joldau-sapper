@@ -52,6 +52,17 @@ $: {
           >
         </div>
         <div class="form-item">
+          <label for="email" class="form-item-name">{$_('email')}: </label>
+          <input 
+            type="email" 
+            id="email" name="email" 
+            class="form-item-value" 
+            placeholder={$_('email')} 
+            required
+            disabled={loading}
+          >
+        </div>
+        <div class="form-item">
           <label for="login" class="form-item-name">{$_('login')}: </label>        
           <input 
             id="login" name="login" 
@@ -66,7 +77,7 @@ $: {
           <label for="password" class="form-item-name">{$_('password')}: </label>        
           <input 
             id="password" name="password" 
-            type="text" 
+            type="password" 
             class="form-item-value" 
             placeholder={$_('password')} 
             required

@@ -25,5 +25,8 @@
   "cancel": "Болдырмау",
   "sign-in": "Кіру",
   "sign-up": "Тіркелу",
-  "username": "Аты-жөні"
+  "username": "Аты-жөні",
+  "email": "Email",
+  "login-required": "Логин өрісті толтыру керек",
+  "password-required": "Пароль өрісті толтыру керек"
 }
