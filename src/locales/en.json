@@ -22,6 +22,8 @@
   "en": "English",
   "login": "Login",
   "password": "Password",
-  "sign-in-up": "Sign In/Up",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "sign-in": "Sign In",
+  "sign-up": "Sign Up",
+  "username": "Name"
 }

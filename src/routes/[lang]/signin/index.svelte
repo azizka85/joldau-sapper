@@ -13,13 +13,13 @@ export function submit() {
 </script>
 
 <svelte:head>
-  <title>{$_('signin')}</title>
+  <title>{$_('sign-in')}</title>
 </svelte:head>
 
 <div class="single">
   <div class="card">
     <div class="card-title">
-      <h2 class="card-title-content">{$_('signin')}</h2>
+      <h2 class="card-title-content">{$_('sign-in')}</h2>
     </div>
     <form class="form" on:submit|preventDefault={submit}>
       <div class="form-item">
@@ -31,7 +31,10 @@ export function submit() {
         <input id="password" name="password" type="text" class="form-item-value" placeholder={$_('password')} required>
       </div>
       <div class="form-item right">
-        <button class="form-item-button bg-primary" type="submit">{$_('sign-in-up')}</button>
+        <a href="{$locale}/signup" class="form-item-link">{$_('sign-up')}</a>
+      </div>
+      <div class="form-item right">
+        <button class="form-item-button bg-primary" type="submit">{$_('sign-in')}</button>
         <button class="form-item-button bg-secondary" on:click={cancel} type="button">{$_('cancel')}</button>        
       </div>
     </form>

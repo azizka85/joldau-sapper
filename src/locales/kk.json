@@ -22,6 +22,8 @@
   "en": "English",
   "login": "Логин",
   "password": "Пароль",
-  "sign-in-up": "Кіру/Тіркелу",
-  "cancel": "Болдырмау"
+  "cancel": "Болдырмау",
+  "sign-in": "Кіру",
+  "sign-up": "Тіркелу",
+  "username": "Аты-жөні"
 }
