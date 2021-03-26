@@ -12,6 +12,10 @@ export function submit() {
 }
 </script>
 
+<svelte:head>
+  <title>{$_('signin')}</title>
+</svelte:head>
+
 <div class="single">
   <div class="card">
     <div class="card-title">

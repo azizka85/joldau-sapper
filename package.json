@@ -1,7 +1,7 @@
 {
   "name": "joldau",
   "description": "Joldau - Guide application for Petroleum Engineering of Satbayev University",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "engines": {
     "node": "15.x"
   },
