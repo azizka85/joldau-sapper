@@ -1,44 +1,60 @@
 <script lang="ts">
-	import { locale, _, locales } from 'svelte-i18n';
-	
-	let menuShowed = false;
-	let showLanguageSelector = false;
-	
-	export function showMenu() {
-		menuShowed = true;
+import { locale, _, locales } from 'svelte-i18n';
+
+let menuShowed = false;
+let languageSelectorShowed = false;
+
+export function showMenu() {
+	menuShowed = true;
+}
+
+export function hideMenu() {
+	menuShowed = false;
+	hideLanguageSelector();
+}
+
+export function showLanguageSelector() {
+	languageSelectorShowed = true;		
+}
+
+export function hideLanguageSelector() {
+	languageSelectorShowed = false;
+}
+
+export function toggleLanguageSelector() {
+	if(languageSelectorShowed) {
+		hideLanguageSelector();
+	} else {
+		showLanguageSelector();
 	}
-	
-	export function hideMenu() {
-		menuShowed = false;
-		showLanguageSelector = false;
-	}
-	</script>
+}
+</script>
 	
 	<div class="background" class:hide-background={!menuShowed} on:click={hideMenu}></div>
 	
 	<div class="menu" class:hide-menu={!menuShowed}>
 		<div class="menu-profile">
-			<div class="menu-profile-image">
+			<a href="{$locale}/settings" class="menu-profile-image">
 				<svg xmlns="http://www.w3.org/2000/svg" class="menu-profile-icon" viewBox="0 0 16 16">
 					<path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
 				</svg>			
-			</div>
-			<div class="menu-profile-signin">{$_('signin')}</div>
+			</a>
+			<a href="{$locale}/signin" class="menu-profile-signin">{$_('signin')}</a>
 			<!--div class="menu-profile-item">Aziz Kudaikulov</div>
 			<div-- class="menu-profile-item">aziz.kudaikulov@gmail.com</div-->		
 		</div>
 		<div class="menu-items">
 			<div class="menu-item">
-				<div class="menu-item-wrapper" on:click={() => showLanguageSelector = !showLanguageSelector}>
+				<div class="menu-item-wrapper" on:click={toggleLanguageSelector}>
 					<img class="menu-item-icon" src="/images/locale/{$locale}.svg" alt="{$locale}">
 					{$_($locale)}
 					<svg xmlns="http://www.w3.org/2000/svg" class="menu-item-right-icon" viewBox="0 0 16 16">
 						<path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
 					</svg> 						
 				</div>	
-				<div class="menu-item-selector" class:hide={!showLanguageSelector}>
+				<div class="menu-item-selector" class:hide={!languageSelectorShowed}>
 					{#each $locales as lang}
-						<a href="/{lang}" class="menu-item-selector-item" on:click={() => showLanguageSelector = false}>
+						<a href="/{lang}" class="menu-item-selector-item" on:click={hideLanguageSelector}>
 							<img class="menu-item-selector-item-icon" src="/images/locale/{lang}.svg" alt="{lang}">
 							{$_(lang)}
 						</a>						
@@ -77,12 +93,12 @@
 					{$_('publish_answers')}
 				</a>
 			</div>
-			<div class="menu-item">
+			<a href="{$locale}/settings" class="menu-item">
 				<svg class="menu-item-icon" viewBox="0 0 24 24">
 					<path d="M21.44 13.58c.57.45.73 1.25.35 1.87l-1.85 3.13c-.37.6-1.11.86-1.79.6l-1.8-.7c-.25.16-.52.3-.79.44l-.27 1.88c-.12.69-.73 1.2-1.44 1.2h-3.7c-.72 0-1.32-.51-1.45-1.23l-.27-1.85a8.12 8.12 0 0 1-.78-.44l-1.81.7c-.66.27-1.42 0-1.79-.6L2.2 15.44a1.44 1.44 0 0 1 .37-1.88l1.5-1.15a6.47 6.47 0 0 1 0-.84l-1.52-1.16a1.44 1.44 0 0 1-.35-1.87l1.85-3.12a1.47 1.47 0 0 1 1.8-.62l1.8.71c.25-.16.51-.3.78-.44l.28-1.87C8.83 2.5 9.43 2 10.15 2h3.7c.7 0 1.3.5 1.45 1.23l.27 1.85c.27.13.53.28.78.44l1.81-.7c.66-.27 1.42 0 1.79.6l1.85 3.13c.37.63.21 1.44-.37 1.88l-1.5 1.15a6.45 6.45 0 0 1 0 .84l1.51 1.16zm-3.64-.26l.08-.57a5.68 5.68 0 0 0 0-1.5l-.08-.57 2.02-1.54-1.36-2.3-2.4.94-.44-.33a6.12 6.12 0 0 0-1.34-.76l-.53-.22-.08-.56L13.39 4h-2.78l-.36 2.47-.53.22c-.48.2-.93.45-1.34.76l-.45.33-.52-.2-1.87-.74-1.37 2.3 2.02 1.54-.07.57a5.85 5.85 0 0 0 0 1.5l.07.57-.46.35-1.56 1.19 1.37 2.3 2.4-.94.44.33c.42.31.87.57 1.34.76l.53.22.08.56.28 1.91h2.78l.36-2.47.53-.22c.48-.2.93-.45 1.33-.76l.45-.33.52.2 1.88.74 1.36-2.3-2.02-1.54zM12 15a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0-2a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" fill-rule="nonzero"/>
 				</svg>			
 				{$_('settings')}
-			</div>
+			</a>
 		</div>
 	</div>
 	

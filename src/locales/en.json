@@ -19,5 +19,9 @@
   "loading": "Loading...",
   "kk": "Қазақша",
   "ru": "Русский",
-  "en": "English"
+  "en": "English",
+  "login": "Login",
+  "password": "Password",
+  "sign-in-up": "Sign In/Up",
+  "cancel": "Cancel"
 }

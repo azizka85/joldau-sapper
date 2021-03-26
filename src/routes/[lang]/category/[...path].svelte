@@ -20,6 +20,7 @@ import { stores } from '@sapper/app';
 import { formatDate } from '../../../globals';
 import type { Category } from '../../../globals';
 import Loader from '../../../components/Loader.svelte';
+import NavLayout from '../../_navLayout.svelte';
 
 export let language: string;
 export let data: Category;
@@ -41,94 +42,96 @@ $: {
   <title>{title}</title>
 </svelte:head>
 
-{#if $preloading}
-  <Loader />
-{:else}
-  <div class="breadcrumbs">
-    <a class="breadcrumbs-link" href="{language}">{$_('home')}</a>
-    {#each data.parents as category}
-      <span class="breadcrumbs-separator">/</span>
-      <a class="breadcrumbs-link" href="{language}/category/{category.path}">
-        {category.title}
-      </a>
-    {/each}
-  </div>
-
-  <main>
-    <div class="title">
-      <h1>{data.title}</h1>
-      <button class="btn">
-        <svg class="btn-icon" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
-          <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
-        </svg>			
-      </button>
+<NavLayout>
+  {#if $preloading}
+    <Loader />
+  {:else}
+    <div class="breadcrumbs">
+      <a class="breadcrumbs-link" href="{language}">{$_('home')}</a>
+      {#each data.parents as category}
+        <span class="breadcrumbs-separator">/</span>
+        <a class="breadcrumbs-link" href="{language}/category/{category.path}">
+          {category.title}
+        </a>
+      {/each}
     </div>
-    <p class="description">{data.description}</p>
-    <p class="info">{data.answersCount} {$_('answers_count', {values: {n: data.answersCount}})}</p>
-    <p class="date-time">
-      {$_('created')}: {formatDate(data.createdAt, language)}
-    </p>
-    {#if data.categories.length > 0}
-      <div class="title underline">
-        <h1>{$_('categories')}</h1>
-      </div>  
-      <div class="cards">
-        {#each data.categories as category}
-          <div class="card">
-            <div class="card-title">
-              <a href="{language}/category/{category.path}" class="card-title-content">
-                {category.title}
-              </a>
-              <div class="card-title-btns">
-                <svg 
-                  class="btn-icon" 
-                  class:stroke={category.id % 2 === 0}
-                  class:fill={category.id % 2 > 0}
-                  viewBox="0 0 21 21"
-                >
-                  <path stroke-miterlimit="2" stroke-width="9%" d="M16.79 5.2A4.15 4.15 0 0 0 13.85 4c-1.1 0-2.15.44-2.93 1.21l-.42.4-.41-.4A4.17 4.17 0 0 0 3 8.08c0 1.1.44 2.12 1.22 2.9l5.97 5.88c.09.09.2.13.3.13a.4.4 0 0 0 .3-.12l6-5.88a4.04 4.04 0 0 0 0-5.8z"/>
-                </svg>              							
-              </div>            
-            </div>
-            <p class="description">{category.description}</p>
-            <p class="info">{category.answersCount} {$_('answers_count', {values: {n: category.answersCount}})}</p>
-            <p class="date-time">
-              {$_('created')}: {formatDate(category.createdAt, language)}
-            </p>
-          </div>
-        {/each}
+
+    <main>
+      <div class="title">
+        <h1>{data.title}</h1>
+        <button class="btn">
+          <svg class="btn-icon" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+            <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+          </svg>			
+        </button>
       </div>
-    {/if}
-    {#if data.answers.length > 0}
-      <div class="title underline">
-        <h1>{$_('answers')}</h1>
-      </div>	
-      <div class="cards">
-        {#each data.answers as answer}
-          <div class="card">
-            <div class="card-title">
-              <a href="{language}/answer/{answer.path}/{answer.name}" class="card-title-content">
-                {answer.title}
-              </a>
-              <div class="card-title-btns">
-                <svg 
-                  class="btn-icon" 
-                  class:stroke={answer.id % 2 === 0}
-                  class:fill={answer.id % 2 > 0}
-                  viewBox="0 0 21 21"
-                >
-                  <path stroke-miterlimit="2" stroke-width="9%" d="M16.79 5.2A4.15 4.15 0 0 0 13.85 4c-1.1 0-2.15.44-2.93 1.21l-.42.4-.41-.4A4.17 4.17 0 0 0 3 8.08c0 1.1.44 2.12 1.22 2.9l5.97 5.88c.09.09.2.13.3.13a.4.4 0 0 0 .3-.12l6-5.88a4.04 4.04 0 0 0 0-5.8z"/>
-                </svg>              
+      <p class="description">{data.description}</p>
+      <p class="info">{data.answersCount} {$_('answers_count', {values: {n: data.answersCount}})}</p>
+      <p class="date-time">
+        {$_('created')}: {formatDate(data.createdAt, language)}
+      </p>
+      {#if data.categories.length > 0}
+        <div class="title underline">
+          <h1>{$_('categories')}</h1>
+        </div>  
+        <div class="cards">
+          {#each data.categories as category}
+            <div class="card">
+              <div class="card-title">
+                <a href="{language}/category/{category.path}" class="card-title-content">
+                  {category.title}
+                </a>
+                <div class="card-title-btns">
+                  <svg 
+                    class="btn-icon" 
+                    class:stroke={category.id % 2 === 0}
+                    class:fill={category.id % 2 > 0}
+                    viewBox="0 0 21 21"
+                  >
+                    <path stroke-miterlimit="2" stroke-width="9%" d="M16.79 5.2A4.15 4.15 0 0 0 13.85 4c-1.1 0-2.15.44-2.93 1.21l-.42.4-.41-.4A4.17 4.17 0 0 0 3 8.08c0 1.1.44 2.12 1.22 2.9l5.97 5.88c.09.09.2.13.3.13a.4.4 0 0 0 .3-.12l6-5.88a4.04 4.04 0 0 0 0-5.8z"/>
+                  </svg>              							
+                </div>            
               </div>
+              <p class="description">{category.description}</p>
+              <p class="info">{category.answersCount} {$_('answers_count', {values: {n: category.answersCount}})}</p>
+              <p class="date-time">
+                {$_('created')}: {formatDate(category.createdAt, language)}
+              </p>
             </div>
-            <p class="info">0 {$_('cnt_messages', {values: {n: 0}})}</p>
-            <p class="date-time">
-              {$_('updated')}: {formatDate(answer.updatedAt, language)}
-            </p>
-          </div>
-        {/each}
-      </div>
-    {/if}
-  </main>
-{/if}
+          {/each}
+        </div>
+      {/if}
+      {#if data.answers.length > 0}
+        <div class="title underline">
+          <h1>{$_('answers')}</h1>
+        </div>	
+        <div class="cards">
+          {#each data.answers as answer}
+            <div class="card">
+              <div class="card-title">
+                <a href="{language}/answer/{answer.path}/{answer.name}" class="card-title-content">
+                  {answer.title}
+                </a>
+                <div class="card-title-btns">
+                  <svg 
+                    class="btn-icon" 
+                    class:stroke={answer.id % 2 === 0}
+                    class:fill={answer.id % 2 > 0}
+                    viewBox="0 0 21 21"
+                  >
+                    <path stroke-miterlimit="2" stroke-width="9%" d="M16.79 5.2A4.15 4.15 0 0 0 13.85 4c-1.1 0-2.15.44-2.93 1.21l-.42.4-.41-.4A4.17 4.17 0 0 0 3 8.08c0 1.1.44 2.12 1.22 2.9l5.97 5.88c.09.09.2.13.3.13a.4.4 0 0 0 .3-.12l6-5.88a4.04 4.04 0 0 0 0-5.8z"/>
+                  </svg>              
+                </div>
+              </div>
+              <p class="info">0 {$_('cnt_messages', {values: {n: 0}})}</p>
+              <p class="date-time">
+                {$_('updated')}: {formatDate(answer.updatedAt, language)}
+              </p>
+            </div>
+          {/each}
+        </div>
+      {/if}
+    </main>
+  {/if}  
+</NavLayout>
