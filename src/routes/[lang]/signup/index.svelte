@@ -1,21 +1,38 @@
 <script lang="ts">
-  import { _ }  from 'svelte-i18n';
-  import { locale } from 'svelte-i18n';
-  import { goto } from '@sapper/app';
+import { _ }  from 'svelte-i18n';
+import { locale } from 'svelte-i18n';
+import { goto } from '@sapper/app';
+import { stores } from '@sapper/app';
+import Loader from '../../../components/Loader.svelte';
+
+export function cancel() {
+  goto($locale);
+}
+
+export function submit() {
   
-  export function cancel() {
-    goto($locale);
+}
+
+let title;
+
+const { preloading } = stores();
+
+$: {
+  if($preloading) {
+    title = $_('loading');
+  } else {
+    title = $_('sign-up');
   }
-  
-  export function submit() {
-    
-  }
-  </script>
-  
-  <svelte:head>
-    <title>{$_('sign-up')}</title>
-  </svelte:head>
-  
+}
+</script>
+
+<svelte:head>
+  <title>{title}</title>
+</svelte:head>
+
+{#if $preloading}
+  <Loader />
+{:else}
   <div class="single">
     <div class="card">
       <div class="card-title">
@@ -44,4 +61,4 @@
       </form>
     </div>    
   </div>
-  
+{/if}

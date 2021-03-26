@@ -54,7 +54,7 @@ export function toggleLanguageSelector() {
 				</div>	
 				<div class="menu-item-selector" class:hide={!languageSelectorShowed}>
 					{#each $locales as lang}
-						<a href="/{lang}" class="menu-item-selector-item" on:click={hideLanguageSelector}>
+						<a href="/{lang}" class="menu-item-selector-item" on:click={hideMenu}>
 							<img class="menu-item-selector-item-icon" src="/images/locale/{lang}.svg" alt="{lang}">
 							{$_(lang)}
 						</a>						
