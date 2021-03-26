@@ -10,10 +10,11 @@ export function cancel() {
 }
 
 export function submit() {
-  
+  loading = true;
 }
 
-let title;
+let title = $_('sign-up');
+let loading = false;
 
 const { preloading } = stores();
 
@@ -41,22 +42,50 @@ $: {
       <form class="form" on:submit|preventDefault={submit}>
         <div class="form-item">
           <label for="name" class="form-item-name">{$_('username')}: </label>
-          <input type="text" id="name" name="name" class="form-item-value" placeholder={$_('username')} required>
+          <input 
+            type="text" 
+            id="name" name="name" 
+            class="form-item-value" 
+            placeholder={$_('username')} 
+            required
+            disabled={loading}
+          >
         </div>
         <div class="form-item">
           <label for="login" class="form-item-name">{$_('login')}: </label>        
-          <input id="login" name="login" type="text" class="form-item-value" placeholder={$_('login')} required>
+          <input 
+            id="login" name="login" 
+            type="text" 
+            class="form-item-value" 
+            placeholder={$_('login')} 
+            required
+            disabled={loading}
+          >
         </div>
         <div class="form-item">
           <label for="password" class="form-item-name">{$_('password')}: </label>        
-          <input id="password" name="password" type="text" class="form-item-value" placeholder={$_('password')} required>
+          <input 
+            id="password" name="password" 
+            type="text" 
+            class="form-item-value" 
+            placeholder={$_('password')} 
+            required
+            disabled={loading}
+          >
         </div>
         <div class="form-item right">
-          <a href="{$locale}/signin" class="form-item-link">{$_('sign-in')}</a>
+          {#if loading}
+            {$_('loading')}
+          {:else}
+            <a href="{$locale}/signin" class="form-item-link">{$_('sign-in')}</a>
+          {/if}
         </div>
         <div class="form-item right">
-          <button class="form-item-button bg-primary" type="submit">{$_('sign-up')}</button>
-          <button class="form-item-button bg-secondary" on:click={cancel} type="button">{$_('cancel')}</button>        
+          {#if loading}
+            <Loader />
+          {/if}
+          <button class="form-item-button bg-primary" type="submit" disabled={loading}>{$_('sign-up')}</button>
+          <button class="form-item-button bg-secondary" on:click={cancel} type="button" disabled={loading}>{$_('cancel')}</button>        
         </div>
       </form>
     </div>    
