@@ -20,11 +20,13 @@
   "kk": "Қазақша",
   "ru": "Русский",
   "en": "English",
-  "login": "Login",
   "password": "Password",
   "cancel": "Cancel",
   "sign-in": "Sign In",
   "sign-up": "Sign Up",
   "username": "Name",
-  "email": "Email"
+  "email": "Email",
+  "fetch_error": "Error on performing request",
+  "incorrect_email_password": "Incorrect email or password",
+  "email_exist": "This email is already registered, choose another"
 }

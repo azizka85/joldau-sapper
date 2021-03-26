@@ -3,6 +3,11 @@ import { getDateFormatter, number } from 'svelte-i18n';
 export const DEFAULT_LANGUAGE = 'en';
 export const DEFAULT_TITLE = 'Satbayev University - Petroleum Engineering';
 
+export enum UserRole {
+  user = "user",
+  admin = "admin"
+};
+
 export enum DataType {
   category = "category", 
   answer = "answer", 
@@ -33,6 +38,20 @@ export interface Category extends Content {
   answersCount: number,
   categories: Category[],
   answers: Answer[]
+};
+
+export interface User {
+  email: string,
+  name: string,
+  role: UserRole,
+  createdAt: string,
+  updatedAt: string
+};
+
+export interface Session {
+  token: string,
+  user: User,
+  createdAt: string
 };
 
 export function formatDate(dateStr: string, language: string): string {

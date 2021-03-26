@@ -14,7 +14,8 @@ export async function seed(knex: Knex): Promise<void> {
 			description: 'Здесь приводятся ответы на вопросы, касательно перевода из другого ВУЗа',
 			language: 'ru',
 			answersCount: 1,
-			parentId: null
+			parentId: null,
+			userId: 1
 		},
 		{
 			id: 2,
@@ -24,7 +25,8 @@ export async function seed(knex: Knex): Promise<void> {
 			description: 'Здесь приводятся ответы на вопросы, касательно отчисления из ВУЗа',
 			language: 'ru',
 			answersCount: 1,
-			parentId: null
+			parentId: null,
+			userId: 1
 		},
 		{
 			id: 3,
@@ -34,7 +36,8 @@ export async function seed(knex: Knex): Promise<void> {
 			description: 'Здесь приводятся ответы на вопросы, касательно получения академического отпуска либо выхода из него',
 			language: 'ru',
 			answersCount: 1,
-			parentId: null
+			parentId: null,
+			userId: 1
 		},
 		{
 			id: 4,
@@ -44,7 +47,8 @@ export async function seed(knex: Knex): Promise<void> {
 			description: 'Здесь приводятся ответы на вопросы, касательно оформления документов на академическую мобильность',
 			language: 'ru',
 			answersCount: 1,
-			parentId: null
+			parentId: null,
+			userId: 1
 		},
 		{
 			id: 5,
@@ -54,7 +58,8 @@ export async function seed(knex: Knex): Promise<void> {
 			description: 'Басқа ЖОО-ға өту туралы сұрақтарға жауаптар берілген осы жерде',
 			language: 'kk',
 			answersCount: 1,
-			parentId: null
+			parentId: null,
+			userId: 1
 		},
 		{
 			id: 6,
@@ -64,7 +69,8 @@ export async function seed(knex: Knex): Promise<void> {
 			description: 'ЖОО-дан шығып кету туралы сұрақтарға жауаптар берілген осы жерде',
 			language: 'kk',
 			answersCount: 0,
-			parentId: null
+			parentId: null,
+			userId: 1
 		},
 		{
 			id: 7,
@@ -74,7 +80,8 @@ export async function seed(knex: Knex): Promise<void> {
 			description: 'Академиялық демалыс туралы сұрақтарға жауаптар берілген осы жерде',
 			language: 'kk',
 			answersCount: 0,
-			parentId: null
+			parentId: null,
+			userId: 1
 		},
 		{
 			id: 8,
@@ -84,7 +91,8 @@ export async function seed(knex: Knex): Promise<void> {
 			description: 'Here, you can find answers about transfer from other universities to Satbayev University',
 			language: 'en',
 			answersCount: 1,
-			parentId: null
+			parentId: null,
+			userId: 1
 		},					
 	]);
 }

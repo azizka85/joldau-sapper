@@ -3,18 +3,15 @@ import { _ }  from 'svelte-i18n';
 import { locale } from 'svelte-i18n';
 import { goto } from '@sapper/app';
 import { stores } from '@sapper/app';
+import { session, saveSession } from '../../../stores/session';
 import Loader from '../../../components/Loader.svelte';
-
-export function cancel() {
-  goto($locale);
-}
-
-export function submit() {
-  loading = true;
-}
 
 let title = $_('sign-up');
 let loading = false;
+
+let nameElem: HTMLInputElement;
+let emailElem: HTMLInputElement;
+let passwordElem: HTMLInputElement;
 
 const { preloading } = stores();
 
@@ -24,6 +21,49 @@ $: {
   } else {
     title = $_('sign-up');
   }
+}
+
+export function cancel() {
+  goto($locale);
+}
+
+export async function submit() {
+  loading = true;
+
+  const body = {
+    name: nameElem.value,
+    email: emailElem.value,
+    password: passwordElem.value
+  };
+
+  let error = null;
+
+  try {
+    const res = await fetch(`${$locale}/signup.json`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+    const data = await res.json();
+
+    if(res.status == 201) {
+      session.set(data);
+      saveSession();     
+      goto($locale);       
+    } else {
+      if(data.code == 1) {
+        error = `${res.status}.${data.code}: ${$_('email_exist')}`;
+      } else {
+        error = `${res.status}: ${$_('fetch_error')}`;
+      }      
+    }     
+  } catch(e) {
+    error = e;
+  }
+
+  if(error) console.error(error);
+
+  loading = false;
 }
 </script>
 
@@ -49,6 +89,7 @@ $: {
             placeholder={$_('username')} 
             required
             disabled={loading}
+            bind:this={nameElem}
           >
         </div>
         <div class="form-item">
@@ -60,17 +101,7 @@ $: {
             placeholder={$_('email')} 
             required
             disabled={loading}
-          >
-        </div>
-        <div class="form-item">
-          <label for="login" class="form-item-name">{$_('login')}: </label>        
-          <input 
-            id="login" name="login" 
-            type="text" 
-            class="form-item-value" 
-            placeholder={$_('login')} 
-            required
-            disabled={loading}
+            bind:this={emailElem}
           >
         </div>
         <div class="form-item">
@@ -82,6 +113,7 @@ $: {
             placeholder={$_('password')} 
             required
             disabled={loading}
+            bind:this={passwordElem}
           >
         </div>
         <div class="form-item right">

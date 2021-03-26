@@ -1,7 +1,7 @@
 {
   "name": "joldau",
   "description": "Joldau - Guide application for Petroleum Engineering of Satbayev University",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "engines": {
     "node": "15.x"
   },
@@ -12,9 +12,11 @@
     "start": "node __sapper__/build",
     "validate": "svelte-check --ignore src/node_modules/@sapper",
     "migrate": "knex migrate:latest",
-    "seed": "knex seed:run"
+    "seed": "knex seed:run",
+    "custom": "knex migrate:make create_session_table"
   },
   "dependencies": {
+    "body-parser": "^1.19.0",
     "compression": "^1.7.1",
     "knex": "^0.95.2",
     "polka": "^0.5.1",

@@ -1,5 +1,6 @@
 <script lang="ts">
 import { locale, _, locales } from 'svelte-i18n';
+import { session } from '../stores/session';
 
 let menuShowed = false;
 let languageSelectorShowed = false;
@@ -39,9 +40,12 @@ export function toggleLanguageSelector() {
 					<path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
 				</svg>			
 			</a>
-			<a href="{$locale}/signin" class="menu-profile-signin">{$_('signin')}</a>
-			<!--div class="menu-profile-item">Aziz Kudaikulov</div>
-			<div-- class="menu-profile-item">aziz.kudaikulov@gmail.com</div-->		
+			{#if !$session}
+				<a href="{$locale}/signin" class="menu-profile-signin">{$_('signin')}</a>
+			{:else}
+				<div class="menu-profile-item">{$session.user.name}</div>
+				<div class="menu-profile-item">{$session.user.email}</div>	
+			{/if}				
 		</div>
 		<div class="menu-items">
 			<div class="menu-item">
