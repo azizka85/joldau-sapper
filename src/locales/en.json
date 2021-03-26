@@ -26,7 +26,5 @@
   "sign-in": "Sign In",
   "sign-up": "Sign Up",
   "username": "Name",
-  "email": "Email",
-  "login-required": "Login can't be left blank",
-  "password-required": "Password can't be left blank"
+  "email": "Email"
 }

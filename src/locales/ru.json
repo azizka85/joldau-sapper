@@ -26,7 +26,5 @@
   "sign-in": "Войти",
   "sign-up": "Зарегистрироваться",
   "username": "Имя",
-  "email": "Email",
-  "login-required": "Поле Логин не должно быть пустым",
-  "password-required": "Поле Пароль не должно быть пустым"
+  "email": "Email"
 }
