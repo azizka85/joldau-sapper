@@ -10,6 +10,7 @@
 	
 	export function hideMenu() {
 		menuShowed = false;
+		showLanguageSelector = false;
 	}
 	</script>
 	
