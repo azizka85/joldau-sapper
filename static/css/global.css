@@ -261,6 +261,7 @@ h2 {
 			left: 4.25rem;
 			margin: 0.5rem 0;			
 			z-index: 2;			
+			box-shadow: 0 0 0.5rem 0 var(--menu-border-color);
 		}
 
 			.menu-item-selector-item {
