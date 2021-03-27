@@ -28,5 +28,6 @@
   "email": "Email",
   "fetch_error": "Ошибка при обработке запроса",
   "incorrect_email_password": "Неверный email или пароль",
-  "email_exist": "Такой email уже существует, выберите другой"
+  "email_exist": "Такой email уже существует, выберите другой",
+  "photo": "Фото"
 }

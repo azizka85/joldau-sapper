@@ -12,6 +12,7 @@ let loading = false;
 let nameElem: HTMLInputElement;
 let emailElem: HTMLInputElement;
 let passwordElem: HTMLInputElement;
+let imageElem: HTMLInputElement;
 
 const { preloading } = stores();
 
@@ -33,7 +34,8 @@ export async function submit() {
   const body = {
     name: nameElem.value,
     email: emailElem.value,
-    password: passwordElem.value
+    password: passwordElem.value,
+    image: imageElem.value
   };
 
   let error = null;
@@ -114,6 +116,17 @@ export async function submit() {
             required
             disabled={loading}
             bind:this={passwordElem}
+          >
+        </div>
+        <div class="form-item">
+          <label for="image" class="form-item-name">{$_('photo')}: </label>
+          <input 
+            type="text" 
+            id="image" name="image" 
+            class="form-item-value"
+            placeholder={$_('photo')}
+            disabled={loading}
+            bind:this={imageElem}
           >
         </div>
         <div class="form-item right">

@@ -5,7 +5,7 @@ import { generateMD5Hash } from "../../../db/utils";
 import { Session, UserRole } from '../../../globals';
 
 export async function post(req: Request, res: ServerResponse, next: () => void) { 
-  const { name, email, password } = (req as any).body;
+  const { name, email, password, image } = (req as any).body;
 
   const resultUser = await knex('user')
     .select('id')
@@ -24,9 +24,8 @@ export async function post(req: Request, res: ServerResponse, next: () => void) 
     const token = generateMD5Hash(`${email}-${password}-${createdAt}`);
 
     const user = {
-      email,
+      email, name, image,
       password: generateMD5Hash(password),
-      name,
       role: UserRole.user,
       createdAt,
       updatedAt: createdAt
@@ -38,7 +37,7 @@ export async function post(req: Request, res: ServerResponse, next: () => void) 
     const data = {
       token, 
       user: {
-        name, email, 
+        name, email, image,
         role: UserRole.user,        
         createdAt: createdAt,
         updatedAt: createdAt 

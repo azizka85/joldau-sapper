@@ -209,6 +209,7 @@ h2 {
 			justify-content: center;
 			margin-bottom: 1rem;
 			text-decoration: none;
+			overflow: hidden;
 		}
 
 			.menu-profile-icon {

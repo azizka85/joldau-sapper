@@ -8,7 +8,7 @@ export async function post(req: Request, res: ServerResponse, next: () => void) 
   const { email, password } = (req as any).body;
 
   const resultUser = await knex('user')
-    .select('id', 'name', 'email', 'role', 'createdAt', 'updatedAt')
+    .select('id', 'name', 'email', 'role', 'image', 'createdAt', 'updatedAt')
     .where({
       email,
       password: generateMD5Hash(password)
@@ -27,6 +27,7 @@ export async function post(req: Request, res: ServerResponse, next: () => void) 
         name: resultUser.name,
         email: resultUser.email,
         role: resultUser.role,
+        image: resultUser.image,
         createdAt: resultUser.createdAt,
         updatedAt: resultUser.updatedAt 
       },

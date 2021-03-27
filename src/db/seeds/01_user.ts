@@ -13,7 +13,8 @@ export async function seed(knex: Knex): Promise<void> {
 			password: generateMD5Hash('lock'),
 			name: 'Aziz Kudaikulov',
 			email: 'aziz.kudaikulov@mail.ru',
-			role: UserRole.admin			
+			role: UserRole.admin,
+			image: 'https://docs.google.com/uc?id=1PgAGg8e_zVUG32RM7_BYyoDxZt8YsDfy'			
 		}			
 	]);
 };

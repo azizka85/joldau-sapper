@@ -28,5 +28,6 @@
   "email": "Email",
   "fetch_error": "Error on performing request",
   "incorrect_email_password": "Incorrect email or password",
-  "email_exist": "This email is already registered, choose another"
+  "email_exist": "This email is already registered, choose another",
+  "photo": "Photo"
 }

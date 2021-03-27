@@ -28,5 +28,6 @@
   "email": "Email",
   "fetch_error": "Сауалды өндеген кездегі қате",
   "incorrect_email_password": "Email немесе пароль қате",
-  "email_exist": "Осы email тіркілген, басқа email-ді таңдаңыз"
+  "email_exist": "Осы email тіркілген, басқа email-ді таңдаңыз",
+  "photo": "Фото"
 }
