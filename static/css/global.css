@@ -369,6 +369,9 @@ h2 {
 
 	.single .card {
 		margin: 0.5rem;
+		width: 100%;
+		min-width: 18rem;
+		max-width: 25rem;
 	}
 
 		.single .card .card-title-content {
@@ -467,6 +470,7 @@ h2 {
 		}
 
 		.form-item-value {
+			flex: 1;
 			padding: 0.5rem;
 			border-radius: 0.25rem;
 			border: 1px solid var(--watermark-color);
