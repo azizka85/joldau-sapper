@@ -29,5 +29,15 @@
   "fetch_error": "Error on performing request",
   "incorrect_email_password": "Incorrect email or password",
   "email_exist": "This email is already registered, choose another",
-  "photo": "Photo"
+  "photo": "Photo",
+  "category": "Category",
+  "title": "Title",
+  "description": "Description",
+  "count_answers": "Answers count",
+  "from": "From",
+  "to": "To",
+  "creation_date": "Creation date",
+  "answer": "Answer",
+  "content": "Content",
+  "editing_date": "Editing date"
 }

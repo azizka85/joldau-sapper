@@ -29,5 +29,15 @@
   "fetch_error": "Сауалды өндеген кездегі қате",
   "incorrect_email_password": "Email немесе пароль қате",
   "email_exist": "Осы email тіркілген, басқа email-ді таңдаңыз",
-  "photo": "Фото"
+  "photo": "Фото",
+  "category": "Категория",
+  "title": "Тақырып",
+  "description": "Сипаттама",
+  "count_answers": "Жауаптардың саны",
+  "from": "Бастап",
+  "to": "Дейін",
+  "creation_date": "Жасалған күні",
+  "answer": "Жауап",
+  "content": "Мазмұн",
+  "editing_date": "Терген күні"
 }

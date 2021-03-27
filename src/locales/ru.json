@@ -29,5 +29,15 @@
   "fetch_error": "Ошибка при обработке запроса",
   "incorrect_email_password": "Неверный email или пароль",
   "email_exist": "Такой email уже существует, выберите другой",
-  "photo": "Фото"
+  "photo": "Фото",
+  "category": "Категория",
+  "title": "Заголовок",
+  "description": "Описание",
+  "count_answers": "Количество ответов",
+  "from": "От",
+  "to": "До",
+  "creation_date": "Дата создания",
+  "answer": "Ответ",
+  "content": "Содержимое",
+  "editing_date": "Дата редактирования"
 }
