@@ -124,7 +124,7 @@ export async function submit() {
             type="text" 
             id="image" name="image" 
             class="form-item-value"
-            placeholder={$_('photo')}
+            placeholder="http://"
             disabled={loading}
             bind:this={imageElem}
           >

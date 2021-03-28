@@ -3,6 +3,7 @@
   --content-background-color: #fff;
   --shade-background-color: rgba(75,75,75,0.3);
 	--context-background-color: rgba(0, 170, 255, 0.1);
+	--alert-background-color: #000;
 
 	--border-color: #ccc;
 	--menu-border-color: #eee;
@@ -595,4 +596,9 @@ h2 {
 
 .bg-secondary {
 	background-color: var(--secondry-color);
+}
+
+.alert {
+	background-color: var(--alert-background-color);
+	position: absolute;	
 }
