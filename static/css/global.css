@@ -105,7 +105,14 @@ h2 {
 			height: 1.5rem;	
 			position: relative;
 			padding: 0.5rem 0.5rem;
+			opacity: 1;
+			transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
 		}
+
+			.search-bar-area.hide-search {
+				visibility: hidden;
+				opacity: 0;
+			}
 
 			.search-bar-area-input {
 				width: 100%;
