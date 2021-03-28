@@ -5,6 +5,7 @@ import { goto } from '@sapper/app';
 import { stores } from '@sapper/app';
 import { session, saveSession } from '../../../stores/session';
 import Loader from '../../../components/Loader.svelte';
+import Alert from '../../../components/Alert.svelte';
 
 let title = $_('sign-up');
 let loading = false;
@@ -13,6 +14,8 @@ let nameElem: HTMLInputElement;
 let emailElem: HTMLInputElement;
 let passwordElem: HTMLInputElement;
 let imageElem: HTMLInputElement;
+
+let messageBox: Alert;
 
 const { preloading } = stores();
 
@@ -63,7 +66,10 @@ export async function submit() {
     error = e;
   }
 
-  if(error) console.error(error);
+  if(error) {
+    console.error(error);
+    messageBox.addMessage(error);
+  }
 
   loading = false;
 }
@@ -146,4 +152,5 @@ export async function submit() {
       </form>
     </div>    
   </div>
+  <Alert bind:this={messageBox} />
 {/if}

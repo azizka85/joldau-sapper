@@ -21,6 +21,7 @@ import { formatDate } from '../../../globals';
 import type { Answer } from '../../../globals';
 import Loader from '../../../components/Loader.svelte';
 import NavLayout from '../../_navLayout.svelte';
+import Alert from '../../../components/Alert.svelte';
 
 export let language: string;
 export let data: Answer;
@@ -76,5 +77,6 @@ $: {
         </div>        
       </div>
     </main>
+    <Alert />
   {/if}  
 </NavLayout>
