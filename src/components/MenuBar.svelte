@@ -70,7 +70,7 @@ export function toggleLanguageSelector() {
 					{/each}
 				</div>		
 			</div>
-			<a href="/" class="menu-item">
+			<a href="{$locale}" class="menu-item">
 				<svg class="menu-item-icon" viewBox="0 0 24 24">
 					<path d="M16.47 15.04l4.24 4.24a1 1 0 1 1-1.42 1.42l-4.25-4.23a7.5 7.5 0 1 1 1.42-1.42zM10.5 16a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11z"/>
 				</svg>		

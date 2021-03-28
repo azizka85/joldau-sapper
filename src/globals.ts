@@ -55,6 +55,20 @@ export interface Session {
   createdAt: string
 };
 
+export interface SearchSettings {
+  categoryTitle?: string,
+  description?: string,
+  answersCountFrom?: number,
+  answersCountTo?: number,
+  createdAtFrom?: Date,
+  createdAtTo?: Date,
+
+  contentTitle?: string,
+  content?: string,
+  updatedAtFrom?: Date,
+  updatedAtTo?: Date
+};
+
 export function formatDate(dateStr: string, language: string): string {
   return getDateFormatter({
     day: '2-digit',

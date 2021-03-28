@@ -1,6 +1,10 @@
 <script lang="ts">
 import { createEventDispatcher } from 'svelte';
 import { _ } from 'svelte-i18n';
+import type { SearchSettings } from '../globals';
+
+export let hideCategory = false;
+export let hideAnswer = false;
 
 const dispatch = createEventDispatcher();  
 
@@ -22,6 +26,16 @@ let updatedAtToElem: HTMLInputElement;
 
 let form: HTMLFormElement;
 
+let searchSettings: SearchSettings = {};
+
+export function getSearchSettings() {
+  return searchSettings;
+}
+
+export function setSearchSettings(params: SearchSettings) {
+  searchSettings = params;
+}
+
 function showMenu() {
   dispatch('showMenu');
 }
@@ -37,10 +51,34 @@ function hideSettings() {
 function clearSettings() {
   searchElem.value = '';
   form.reset();
+  updateSearch();
 }
 
 function submit() {
+  hideSettings();
+  updateSearch();
+}
 
+function updateSearch() {
+  searchSettings = {};
+
+  if(!hideCategory) {
+    searchSettings.categoryTitle = categoryTitleElem.value;
+    searchSettings.description = descriptionElem.value;
+    searchSettings.answersCountFrom = answersCountFromElem.value ? Number.parseInt(answersCountFromElem.value, 10) : null;
+    searchSettings.answersCountTo = answersCountToElem.value ? Number.parseInt(answersCountToElem.value, 10) : null;
+    searchSettings.createdAtFrom = createdAtFromElem.value ? new Date(createdAtFromElem.value) : null;
+    searchSettings.createdAtTo = createdAtToElem.value ? new Date(createdAtToElem.value) : null;    
+  }
+
+  if(!hideAnswer) {
+    searchSettings.contentTitle = contentTitleElem.value;
+    searchSettings.content = contentElem.value;
+    searchSettings.updatedAtFrom = updatedAtFromElem.value ? new Date(updatedAtFromElem.value) : null;
+    searchSettings.updatedAtTo = updatedAtToElem.value ? new Date(updatedAtToElem.value) : null;
+  }
+
+  dispatch('search');
 }
 </script>
   
@@ -83,7 +121,7 @@ function submit() {
             class="search-bar-filter-icon filter-layer" 
             class:hide-filter={!settingsShowed}
             viewBox="0 0 16 16" 
-            on:click={hideSettings}
+            on:click={submit}
           >
             <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
           </svg>          	          
