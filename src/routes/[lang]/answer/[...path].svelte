@@ -43,7 +43,7 @@ $: {
   <title>{title}</title>
 </svelte:head>
 
-<NavLayout>
+<NavLayout hideSearch={true}>
   {#if $preloading}
     <Loader />
   {:else}

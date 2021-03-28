@@ -148,6 +148,10 @@ h2 {
 			cursor: pointer;			
 		}			
 
+			.search-bar-filter-wrapper.hide-filter-settings {
+				visibility: hidden;
+			}
+
 			.search-bar-filter-icon-wrapper {
 				width: 1.5rem;	
 				height: 1.5rem;

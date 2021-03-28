@@ -4,6 +4,8 @@ import MenuBar from '../components/MenuBar.svelte';
 import type { SearchSettings } from '../globals';
 import { createEventDispatcher } from 'svelte';
 
+export let hideSearch = false;
+
 let menuBar: MenuBar;
 let searchBar: SearchBar;
 
@@ -18,7 +20,7 @@ function search() {
 }
 </script>
 
-<SearchBar on:showMenu={menuBar.showMenu} on:search={search} bind:this={searchBar} />
+<SearchBar on:showMenu={menuBar.showMenu} on:search={search} bind:this={searchBar} {hideSearch} />
 <MenuBar bind:this={menuBar} />		
 
 <slot></slot>
