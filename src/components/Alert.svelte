@@ -14,7 +14,7 @@ export function show() {
 
 export function hide() {
   showed = false;
-  messages = [];
+  setTimeout(() => messages = [], 500);
 }
 </script>
 
