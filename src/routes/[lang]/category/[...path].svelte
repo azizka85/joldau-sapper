@@ -101,9 +101,7 @@ $: {
         <a class="breadcrumbs-link" href="{language}/category/{category.path}">
           {category.title}
         </a>
-      {/each}
-      <span class="breadcrumbs-separator">/</span>
-      <a class="breadcrumbs-link" href="{language}/category/transfer">Test</a>
+      {/each}      
     </div>
 
     <main>
