@@ -140,13 +140,20 @@ h2 {
 			}
 
 		.search-bar-filter-wrapper {
-			width: 1.5rem;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			width: 3.5rem;
 			height: 1.5rem;	
-			cursor: pointer;
-		}
+			cursor: pointer;			
+		}			
+
+			.search-bar-filter-icon-wrapper {
+				width: 1.5rem;	
+				height: 1.5rem;
+			}
 
 			.search-bar-filter-icon {
-				position: absolute;
 				fill: var(--primary-color);
 				width: 1.5rem;
 				height: 1.5rem;				
@@ -155,36 +162,13 @@ h2 {
 				transition: opacity 0.5s ease-in-out, z-index 0.5s ease-in-out;				
 			}
 
+				.search-bar-filter-icon.filter-layer {
+					position: absolute;	
+				}
+
 				.search-bar-filter-icon.hide-filter {
 					opacity: 0;
 					z-index: 0;
-				}
-
-			.search-bar-check {
-				position: absolute;
-				display: flex;
-				flex-direction: row;
-				width: 3.5rem;
-				height: 1.5rem;		
-				right: 1rem;
-				opacity: 1;
-				z-index: 1;				
-				transition: opacity 0.5s ease-in-out, z-index 0.5s ease-in-out;
-			}
-
-				.search-bar-check.hide-check {
-					opacity: 0;
-					z-index: 0;
-				}
-
-				.search-bar-check-icon {				
-					fill: var(--primary-color);
-					width: 1.5rem;
-					height: 1.5rem;									
-				}
-
-				.search-bar-check-icon + .search-bar-check-icon {
-					margin-left: 0.5rem;
 				}
 
 	.search-bar-details {
