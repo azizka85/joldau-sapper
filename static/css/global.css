@@ -160,11 +160,12 @@ h2 {
 				position: absolute;
 				display: flex;
 				flex-direction: row;
-				opacity: 1;
-				z-index: 1;
 				width: 3.5rem;
 				height: 1.5rem;		
 				right: 1rem;
+				opacity: 1;
+				z-index: 1;				
+				transition: opacity 0.5s ease-in-out, z-index 0.5s ease-in-out;
 			}
 
 				.search-bar-check.hide-check {
@@ -175,8 +176,7 @@ h2 {
 				.search-bar-check-icon {				
 					fill: var(--primary-color);
 					width: 1.5rem;
-					height: 1.5rem;					
-					transition: opacity 0.5s ease-in-out, z-index 0.5s ease-in-out;
+					height: 1.5rem;									
 				}
 
 				.search-bar-check-icon + .search-bar-check-icon {
