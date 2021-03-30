@@ -84,7 +84,7 @@ function updateSearch() {
 </script>
   
 <header>
-  <div class="search-bar-wrapper" class:hide-details={!settingsShowed}>
+  <div class="search-bar-wrapper">
     <div class="search-bar">			
       <svg 
         xmlns="http://www.w3.org/2000/svg" 
