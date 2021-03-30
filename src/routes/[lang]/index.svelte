@@ -18,6 +18,7 @@ export async function preload({ params }) {
 import { _ } from 'svelte-i18n'; 
 import { stores } from '@sapper/app';
 import { DEFAULT_TITLE, formatDate } from '../../globals';
+import type { SearchSettings } from '../../globals';
 import type { Category } from '../../globals';
 import Loader from '../../components/Loader.svelte';
 import NavLayout from '../_navLayout.svelte';
@@ -27,6 +28,49 @@ export let language: string;
 export let data: Category;
 
 let title;
+let loading = false;
+let messageBox: Alert;
+
+export async function search(evt: CustomEvent<SearchSettings>) {
+  loading = true;
+
+  let error = null;
+
+  try {
+    let url = `${language}.json`;
+    
+    const params: string[] = [];   
+    if(evt.detail.answersCountFrom) params.push('answersCountFrom=' + evt.detail.answersCountFrom.toString());    
+    if(evt.detail.answersCountTo) params.push('answersCountTo=' + evt.detail.answersCountTo.toString());    
+    if(evt.detail.categoryTitle) params.push('categoryTitle=' + evt.detail.categoryTitle);    
+    if(evt.detail.content) params.push('content=' + evt.detail.content);    
+    if(evt.detail.contentTitle) params.push('contentTitle=' + evt.detail.contentTitle);    
+    if(evt.detail.createdAtFrom) params.push('createdAtFrom=' + evt.detail.createdAtFrom.getTime().toString());    
+    if(evt.detail.createdAtTo) params.push('createdAtTo=' + evt.detail.createdAtTo.getTime().toString());    
+    if(evt.detail.description) params.push('description=' + evt.detail.description);    
+    if(evt.detail.updatedAtFrom) params.push('updatedAtFrom=' + evt.detail.updatedAtFrom.getTime().toString());    
+    if(evt.detail.updatedAtTo) params.push('updatedAtTo=' + evt.detail.updatedAtTo.getTime().toString());  
+    
+    if(params.length > 0) url += '?' + params.join("&");
+
+    const res = await fetch(url);    
+
+    if(res.status == 200) {
+      data = await res.json();    
+    } else {
+      error = `${res.status}: ${$_('fetch_error')}`;
+    }      
+  } catch(e) {
+    error = e;
+  }
+
+  if(error) { 
+    console.error(error);
+    messageBox.addMessage(error);
+  }  
+
+  loading = false;
+}
 
 const { preloading } = stores();
 
@@ -43,8 +87,8 @@ $: {
 	<title>{title}</title>
 </svelte:head>
 
-<NavLayout>
-  {#if $preloading}
+<NavLayout on:search={search}>
+  {#if $preloading || loading}
     <Loader />
   {:else}
     <main>
@@ -120,6 +164,6 @@ $: {
         </div>		
       {/if}	
     </main>
-    <Alert />
+    <Alert bind:this={messageBox} />
   {/if}  
 </NavLayout>
