@@ -180,7 +180,7 @@ $: {
           {/each}
         </div>
       {/if}
-    </main>
-    <Alert bind:this={messageBox} />
+    </main>    
   {/if}  
+  <Alert bind:this={messageBox} />
 </NavLayout>
